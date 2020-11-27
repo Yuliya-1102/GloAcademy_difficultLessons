@@ -1,60 +1,25 @@
 'use strict';
 
-let current = 10;
+let weekDays = document.querySelector('.weekDays');
+let week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+let date = new Date();
 
+date.setDate(date.getDate() -1);
+let currentDay = date.getDay();
 
-function rondomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    let numGame = Math.floor(Math.random() * (max - min + 1)) + min;
-		console.log(numGame);
-		
-    function guessNumber(numGame) {
-        let numUser = +prompt('Угадай число от 1 до 100');
-        if(numUser > 0 && numUser < numGame) {
-            current--;
-            alert('Загаданное число больше, осталось попыток ' + current);
-            attemptCount(current);
-        } else if (numUser > numGame) {
-            current--;
-            alert('Загаданное число меньше, осталось попыток ' + current);
-            attemptCount(current);
-        } else if (isNaN(numUser)) {
-            current--;
-            alert('Введи число! осталось попыток ' + current);
-            attemptCount(current);
-        } else if (numUser === 0) {
-            alert('Игра окончена!');
-        } else if (numUser === numGame) {
-            let finish = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
-            if(finish){
-              current = 10;
-              rondomNumber(min, max);
-            } else {
-							alert('Игра окончена!');
-              return;
-            }
-					}
-		}
-		guessNumber(numGame);
-		
-		function attemptCount(count){
-			console.log(count);
-			if(count <= 0){
-					let start = confirm('Попытки закончились, хотите сыграть еще?');
-					if(start){
-						current = 10;
-						rondomNumber(min, max);
-						console.log(start);
-					} else {
-						alert('Игра окончена!');
-						return;
-					}
-			} else{
-					guessNumber(numGame);
-			}
-		}
-}
-
-rondomNumber(1, 100);
-
+function addWeekDays(){
+  for(let i = 0; i < week.length; i++){
+    let p = document.createElement('p');
+    p.innerHTML = week[i];
+    if(i === 5 || i === 6){
+      p.style.fontStyle = 'italic';
+      if(i === currentDay){
+        p.style.fontWeight = 'bold';
+      }
+    } else if(i === currentDay){
+      p.style.fontWeight = 'bold';
+    } 
+    weekDays.append(p);
+  }
+}  
+addWeekDays();
