@@ -13,11 +13,11 @@ function rondomNumber(min, max) {
         let numUser = +prompt('Угадай число от 1 до 100');
         if(numUser > 0 && numUser < numGame) {
             current--;
-            alert('Загаданное число меньше, осталось попыток ' + current);
+            alert('Загаданное число больше, осталось попыток ' + current);
             attemptCount(current);
         } else if (numUser > numGame) {
             current--;
-            alert('Загаданное число больше, осталось попыток ' + current);
+            alert('Загаданное число меньше, осталось попыток ' + current);
             attemptCount(current);
         } else if (isNaN(numUser)) {
             current--;
