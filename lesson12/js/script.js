@@ -60,20 +60,21 @@ todoControl.addEventListener('submit', function(event){ // везде, где е
     event.preventDefault();
 
     // проверка на пустую строку
-    if(headerInput.value === ''){
+    if(headerInput.value.trim() === ''){
         todoControl.disabled = true;
     } else{
         const newTodo = {
             value: headerInput.value,
             completed: false
         };
-        let todoDate = JSON.parse( localStorage.todo );
+        // let todoDate = JSON.parse( localStorage.todo );
         todoDate.push(newTodo);
 
         localStorage.setItem('todo', JSON.stringify(todoDate));
     
         render();
-    
+        
+       
        
     }
     
