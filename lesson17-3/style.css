@@ -1,0 +1,12 @@
+#city{
+    display: none;
+  }
+  .result{
+    margin: 15px 0;
+  }
+  .list{
+      display: flex;
+  }
+  option{
+      width: 100px;
+}
